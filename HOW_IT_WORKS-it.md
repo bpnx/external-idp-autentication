@@ -262,4 +262,4 @@ per la connessione all'IDP.
 
 # Autori #
 Marco Naimoli <marco.naimoli@unipd.it>
-Stefano Zanmarchi <stefano.zanarchi@unipd.it>
+Stefano Zanmarchi <stefano.zanmarchi@unipd.it>
