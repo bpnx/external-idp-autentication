@@ -261,5 +261,5 @@ nella maschera di login, la selezione dell'IDP da parte dell'utente causa la scr
 per la connessione all'IDP.
 
 # Autori #
-Marco Naimoli <marco.naimoli@unipd.it>
-Stefano Zanmarchi <stefano.zanmarchi@unipd.it>
+
+Marco Naimoli <marco.naimoli@unipd.it>, Stefano Zanmarchi <stefano.zanmarchi@unipd.it>
