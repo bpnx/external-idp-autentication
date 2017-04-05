@@ -250,6 +250,9 @@ Per estrarre gli header con i dati degli attributi di **IDPext** ed integrarli c
 
 Nota: l'autenticazione tramite **IDPext**, valorizza, di fatto, la variabile REMOTE_USER in base alla configurazione shibboleth2.xml di **SPidpint**
 
+## Identità multiple ##
+
+Può succedere che un utente autenticato su **IDPext** abbia più identità nell'**IDPint**; al momento abbiamo affrontato questo problema forzando "staticamente" l'identità all'utente secondo nostre regole. Il problema è comunque relativo, in quanto l'utente può sempre autenticarsi localmente su **IDPint** con l'identità preferita. Abbiamo seguito gli esempi di [Shibboleth Wiki](https://wiki.shibboleth.net/confluence/display/IDP30/AttributePostLoginC14NConfiguration#AttributePostLoginC14NConfiguration-OneCommonUseofAttribute-basedCanonicalization) 
 
 ## Integrazione SPID ##
 
