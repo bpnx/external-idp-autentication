@@ -1,6 +1,6 @@
 # PREMESSA #
 
-Quella delineata è la nostra soluzione; è resa pubblica a puro scopo di condivisione, ma si declina ogni reponsabilità per effetti imprevisti. E' destinato ad un pubblico che abbia già dimestichezza con l'argomento e sia in grado di adattare l'idea alla propria realtà.
+Quella delineata è la nostra soluzione; è resa pubblica a puro scopo di condivisione, non diamo alcun tipo di garanzia, è destinata ad un pubblico che abbia già dimestichezza con l'argomento e sia in grado di adattarla alla propria realtà.
 
 # Il problema #
 
