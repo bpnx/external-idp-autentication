@@ -165,7 +165,7 @@ Innanzitutto è necessario configurare anche la parte IDP di **IDPint** per fare
 ```    
 
 Per l'autenticazione viene utilizzato il flow authn/MFA (Multi Factor Authentication), grazie al quale è possibile specificare una logica per l'utilizzo di più metodi di autenticazione.
-La configurazione MFA è la seguente (copiata da Shibboleth Wiki e leggermente modificata):
+La configurazione MFA è la seguente (copiata da [Shibboleth Wiki](https://wiki.shibboleth.net/confluence/display/IDP30/MultiFactorAuthnConfiguration) e leggermente modificata):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
