@@ -40,7 +40,7 @@ Ovviamente per realizzare la fusione degli attributi, deve già esistere un'asso
 
 ### Considerazioni ###
 
-[DA RIVEDERE, forse non serve ] Premessa: per fare in modo che l'utente si autentichi presso **IDPext**, secondo il paradigma SAML, è necessario che il browser dell'utente venga mandato all'**IDPext** tramite redirect; questa normalmente è l'operazione svolta dal software di Service Provider
+Premessa: per fare in modo che l'utente si autentichi presso **IDPext**, secondo il paradigma SAML, è necessario che il browser dell'utente venga mandato all'**IDPext** tramite redirect; questa normalmente è l'operazione svolta dal software di Service Provider
 
 Il problema da risolvere è quindi:
 
@@ -252,7 +252,7 @@ Nota: l'autenticazione tramite **IDPext**, valorizza, di fatto, la variabile REM
 
 ## Identità multiple ##
 
-Può succedere che un utente autenticato su **IDPext** abbia più identità nell'**IDPint**; al momento abbiamo affrontato questo problema forzando "staticamente" l'identità all'utente secondo nostre regole. Il problema è comunque relativo, in quanto l'utente può sempre autenticarsi localmente su **IDPint** con l'identità preferita. Abbiamo seguito gli esempi di [Shibboleth Wiki](https://wiki.shibboleth.net/confluence/display/IDP30/AttributePostLoginC14NConfiguration#AttributePostLoginC14NConfiguration-OneCommonUseofAttribute-basedCanonicalization) 
+Può succedere che un utente autenticato su **IDPext** abbia più identità nell'**IDPint**; al momento abbiamo affrontato questo problema forzando "staticamente" l'identità all'utente secondo nostre regole. Il problema è comunque relativo, in quanto l'utente può sempre autenticarsi localmente su **IDPint** con l'identità preferita. Abbiamo seguito gli esempi di [Shibboleth Wiki](https://wiki.shibboleth.net/confluence/display/IDP30/AttributePostLoginC14NConfiguration#AttributePostLoginC14NConfiguration-OneCommonUseofAttribute-basedCanonicalization) , in particolare la configurazione di esempio **attribute-sourced-subject-c14n-config.xml**
 
 ## Integrazione SPID ##
 
