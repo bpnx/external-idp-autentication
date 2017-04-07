@@ -11,7 +11,7 @@ Il problema che abbiamo dovuto affrontare è stato quello di permettere all'uten
 * non modificare la configurazione degli attuali SP, che si rivolgono unicamente all'IDP istituzionale
 * non utilizzare, il piu' possibile, programmazione in alcun linguaggio (un programma, anche scritto "in casa", ha un suo costo in termini di impegno per la manutenzione) e utilizzare di preferenza l'utilizzo di qualcosa di già esistente
 
-Quanto abbiamo utilizzato utilizza:
+Il software utilizzato:
 
 * Shibboleth IDP 3.3.1
 * Shibboleth SP 2.6
