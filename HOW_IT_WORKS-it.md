@@ -61,11 +61,13 @@ L'autenticazione tramite **IDPext** avverrà tramite il flow _authn/RemoteUser_;
 ### Configurazione Apache ###
 
 Apache ha il doppio ruolo di reverse proxy di **IDPint** ed SP per l'autenticazione su **IDPext**. 
-Uno dei punti cruciali della soluzione è che la parte SP "scatti" quando viene selezionata l'autenticazione esterna: quindi è necessario proteggere la Location di autenticazione RemoteUser con il software di Shibboleth SP. In questo modo, quando l'utente preme il pulsante per l'autenticazione esterna, passa inconsapevolmente sotto il controllo di **SPidpint**
+Uno dei punti cruciali della soluzione è che la parte SP "scatti" quando viene selezionata l'autenticazione esterna: quindi è necessario proteggere la Location di autenticazione del flow authn/RemoteUser con il software di Shibboleth SP. In questo modo, quando l'utente preme il pulsante per l'autenticazione esterna, passa inconsapevolmente sotto il controllo di **SPidpint**
 
 La Location di default relativa al flusso authn/RemoteUser è:
 
   /idp/Authn/RemoteUser
+
+La configurazione (parziale) di Apache relativamente alla Location "/idp/Authn/RemoteUser" è:
 
 ```apache
  <Location "/idp/Authn/RemoteUser">
@@ -75,11 +77,11 @@ La Location di default relativa al flusso authn/RemoteUser è:
  </Location>
 ```
 
-Per trasferire i dati relativi al REMOTE_USER e gli attributi ricevuti all'**IDPint** è necessario utilizzare il modulo Apache "headers" e configurare degli appositi header (RequestHeader).
+Dopo un'autenticazione positiva, il controllo torna ad **IDPint**, che ha bisogno di ottenere il valore del "Remote User"; per trasferire i dati relativi alla variabile di Apache REMOTE_USER abbiamo scelto di utilizzare il modulo Apache "Headers" e configurare degli appositi header (RequestHeader); il flow authn/RemoteUser prevede di poter ricavare il valore del "Remote User" anche dagli header HTTP.
 
 Riassumendo:
 
-1. quando l'utente seleziona l'autenticazione su **IDPext** 
+1. quando l'utente seleziona l'autenticazione esterna su **IDPext** 
 1. viene attivato lo Shibboleth SP, 
 1. che porta l'utente ad autenticarsi presso un IDP esterno. 
 1. Dopo l'autenticazione, l'utente "ritorna" al path iniziale, "/idp/Authn/RemoteUser", proseguendo l'autenticazione authn/RemoteUser. 
@@ -99,7 +101,7 @@ La configurazione completa di Apache per la Location "/idp/Authn/RemoteUser":
   </Location>
 ```
 
-C'è però un problema: gli attributi rilasciati da **IDPext** vengono persi, perchè Shibboleth SP e Shibboleth IDP sono installate nello stesso computer ma non dialogano fra di loro direttamente; grazie all'istanza di Apache installata c'è una semplice soluzione: analogamente a quanto fatto con REMOTE_USER, è possibile mandare gli attributi ricevuti da **IDPext**, tramite la direttiva RequestHeader, ad **IDPint**; su **IDPint**, grazie all'oggetto
+C'è però un problema: gli attributi rilasciati da **IDPext** vengono persi, perchè Shibboleth SP e Shibboleth IDP sono installate nello stesso computer ma non dialogano fra di loro direttamente; grazie all'istanza di Apache installata c'è una semplice soluzione: analogamente a quanto fatto con REMOTE_USER, è possibile mandare gli attributi ricevuti da **IDPext**, tramite la direttiva RequestHeader, ad **IDPint** (bisogna ricordare che l'istanza SP rende disponibili tutti gli attributi ricevuti all'istanza Apache, come variabili, seguendo le direttive dell'attribute-map.xml); su **IDPint**, grazie all'oggetto
 
   shibboleth.HttpServletRequest
 
@@ -259,9 +261,7 @@ Può succedere che un utente autenticato su **IDPext** abbia più identità nell
 SPID è il "Sistema Pubblico di Identità Digitale" lanciato dal governo italiano.
 
 Utilizzando il metodo appena descritto, l'integrazione con SPID a questo punto è abbastanza evidente, **IDPext** rappresenta uno degli Identity Provider SPID; 
-nella realizzazione abbiamo modificato leggermente lo Shibboleth Embedded Discovery Service, in modo da poter utilizzare i cookie come metodo di scelta dell'IDP: in questo modo 
-nella maschera di login, la selezione dell'IDP da parte dell'utente causa la scrittura di un cookie con l'entity ID dell'IDP prescelto; l'EDS modificato utilizza tale cookie
-per la connessione all'IDP.
+nella realizzazione, per seguire le linee guida sull'implementazione dell'interfaccia web, abbiamo modificato leggermente lo Shibboleth Embedded Discovery Service, in modo da poter utilizzare i cookie come metodo di scelta dell'IDP: in questo modo nella maschera di login, la selezione dell'IDP da parte dell'utente causa la scrittura di un cookie con l'entity ID dell'IDP prescelto; l'EDS modificato utilizza tale cookie per la connessione all'IDP.
 
 # Autori #
 
