@@ -233,15 +233,14 @@ La view **login.vm** è stata modificata in modo da ritornare, oltre al classico
 Per estrarre gli header con i dati degli attributi di **IDPext** ed integrarli con quelli di **IDPint**, su **IDPint** posso definire attributi di questo tipo:
 
 ```xml
-        <resolver:AttributeDefinition id="idpext-attribute1" xmlns="urn:mace:shibboleth:2.0:resolver:ad" xsi:type="ad:Script" customObjectRef="shibboleth.HttpServletRequest">
-                <resolver:AttributeEncoder xsi:type="enc:SAML2String" name="idpext-attribute1" friendlyName="idpext-attribute1" />
+        <AttributeDefinition id="idpext-attribute1" xsi:type="ScriptedAttribute" customObjectRef="shibboleth.HttpServletRequest">
+                <AttributeEncoder xsi:type="SAML2String" name="idpext-attribute1" friendlyName="idpext-attribute1" />
                 <Script><![CDATA[       
                 if (custom.getHeader("Idpext-Attribute1") != ""  && custom.getHeader("Idpext-Attribute1") != "(null)" ) {
                         idpext-attribute1.addValue(custom.getHeader("Idpext-Attribute1"));
                 }
-                
         ]]></Script>
-        </resolver:AttributeDefinition>
+        </AttributeDefinition>
 ```
 
 ### Configurazione SPidpint ###
